@@ -16,9 +16,9 @@ class Book extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
+       'name',
         'isbn',
-        'released_at',
+        'released_at', 
     ];
 
     /**

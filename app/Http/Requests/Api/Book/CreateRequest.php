@@ -23,6 +23,21 @@ class CreateRequest extends FormRequest
         ];
     }
 
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'The book name is required.',
+            'name.string' => 'The book name must be a string.',
+            'name.max' => 'The book name cannot exceed 100 characters.',
+            'isbn.required' => 'The ISBN is required.',
+            'isbn.string' => 'The ISBN must be a string.',
+            'isbn.max' => 'The ISBN cannot exceed 100 characters.',
+            'isbn.unique' => 'This ISBN is already registered in our system.',
+            'released_at.required' => 'The release date is required.',
+            'released_at.date' => 'Please provide a valid release date.',
+        ];
+    }
+
     protected function failedValidation(Validator $validator)
     {
         $response = new JsonResponse([
