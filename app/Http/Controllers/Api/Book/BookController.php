@@ -58,4 +58,22 @@ class BookController extends Controller
             'message' => BookMessageEnum::DELETED_SUCCESSFULLY->value,
         ], JsonResponse::HTTP_OK);
     }
+
+    public function getById(Int $id): JsonResponse
+    {
+        $book = $this->bookService->getById($id);
+        
+        if (! $book) {
+            return response()->json([
+                'message' => BookMessageEnum::NOT_FOUND->value,
+            ], JsonResponse::HTTP_NOT_FOUND);
+        }
+
+        return response()->json([
+            'message' => BookMessageEnum::SINGLE_RETRIEVED_SUCCESSFULLY->value,
+            'data' => [
+                'book' => $book
+            ],
+        ], JsonResponse::HTTP_OK);
+    }
 }

@@ -30,4 +30,9 @@ class BookService
     {
         return Book::orderBy('id')->cursorPaginate($perPage ?? Config::get('pagination.size', 15));
     }
+
+    public function getById(Int $id): ?Book
+    {
+        return Book::find($id);
+    }
 }
