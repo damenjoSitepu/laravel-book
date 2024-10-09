@@ -29,4 +29,18 @@ class Book extends Model
     protected $casts = [
         'released_at' => 'datetime',
     ];
+
+    protected  $appends = [
+        'formatted_released_at',
+    ];
+
+    /**
+     * Get the formatted released_at date.
+     *
+     * @return string|NULL
+     */
+    public function getFormattedReleasedAtAttribute(): ?string
+    {
+        return $this->released_at ? $this->released_at->format('Y-m-d') : NULL;
+    }
 }
